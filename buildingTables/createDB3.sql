@@ -2,12 +2,12 @@
 -- Switchin on referentia inegrity rules (foreign key rules)
 PRAGMA foreign_keys = ON;
 
+DROP TABLE IF EXISTS propertyForRent;
 DROP TABLE IF EXISTS staff;
 DROP TABLE IF EXISTS branch;
-DROP TABLE IF EXISTS propertyForRent;
 
 CREATE TABLE branch (
-    branchNo CHAR(4) PRIMARY KEY,
+    branchNo VARCHAR(10) PRIMARY KEY,
     street VARCHAR(20),
     city VARCHAR(15),
     postcode VARCHAR(10)
@@ -26,7 +26,7 @@ INSERT INTO branch (branchno, street, city, postcode) VALUES
 ('B576', '33 Main St', 'Liverpool', 'L1 2HJ');
 
 CREATE TABLE staff (
-    staffNo CHAR(4) PRIMARY KEY,
+    staffNo VARCHAR(10) PRIMARY KEY,
     fName VARCHAR(10),
     lName VARCHAR(10),
     position VARCHAR(10),
@@ -34,7 +34,7 @@ CREATE TABLE staff (
     DOB DATE,
     Salary INTEGER,
     branchNo,
-    FOREIGN KEY(branchNo) REFERENCES Branch(branchNo)
+    FOREIGN KEY(branchNo) REFERENCES branch(branchNo)
 );
 
 -- Staff data
@@ -104,18 +104,54 @@ INSERT INTO staff (staffno, fname, lname, position, sex, dob, salary, branchno) 
 ('SSU57', 'Oscar', 'Cook', 'Supervisor', 'M', '1984-04-23', 21500, 'B901');
 
 CREATE TABLE propertyForRent (
-    propertyNo CHAR(4) PRIMARY KEY NOT NULL,
+    propertyno VARCHAR(10) PRIMARY KEY NOT NULL,
     street VARCHAR(20),
     city VARCHAR(15),
-    postcode VARCHAR(10)
-    type NOT NULL CHECK( type IN ('House','Flat')),
+    postcode VARCHAR(10),
+    type VARCHAR(10) NOT NULL CHECK( type IN ('House','Flat')),
     rooms INTEGER,
     rent INTEGER,
-    ownerNo CHAR(4),
+    ownerNo VARCHAR(10),
     staffNo,
     branchNo,
     FOREIGN KEY(staffNo) REFERENCES staff(staffNo),
     FOREIGN KEY(branchNo) REFERENCES branch(branchNo)
 );
 
--- Branch Staff PropertyForRent Minimum
+-- Property for Rent data
+INSERT INTO propertyForRent (propertyno, street, city, postcode, type, rooms, rent, ownerno, staffno, branchno) VALUES
+('PR1423', '16 Holhead', 'Aberdeen', 'AB7 5SU', 'House', 6, 650, 'PO4621', 'SAS09', 'B394'),
+('PR9478', '6 Argyll St', 'London', 'NW2', 'Flat', 4, 400, 'PO8734', 'SAS41', 'B721'),
+('PR4567', '6 Lawrence St', 'Glasgow', 'G11 9QX', 'Flat', 3, 350, 'PO4023', NULL, 'B052'),
+('PR3689', '2 Manor Rd', 'Glasgow', 'G32 4QX', 'Flat', 3, 375, 'PO9312', 'SAS37', 'B052'),
+('PR2145', '18 Dale Rd', 'Glasgow', 'G12', 'House', 5, 600, 'PO8734', 'SAS37', 'B052'),
+('PR1678', '5 Novar Dr', 'Glasgow', 'G12 9AX', 'Flat', 4, 450, 'PO9312', 'SSU14', 'B052'),
+('PR1589', '44 Elm St', 'Edinburgh', 'EH3 5FD', 'Flat', 2, 750, 'PO4756', 'SMA22', 'B235'),
+('PR9512', '10 Broadway', 'Cardiff', 'CF24 3SG', 'House', 4, 950, 'PO8865', 'SAS38', 'B467'),
+('PR5623', '3 Hillcrest', 'Brighton', 'BN1 3PQ', 'Flat', 1, 420, 'PO4178', NULL, 'B189'),
+('PR3734', '1 Riverside', 'Manchester', 'M1 3HJ', 'Flat', 2, 600, 'PO9489', 'SSU15', 'B843'),
+('PR2289', '9 Meadow Rd', 'Liverpool', 'L1 4RT', 'House', 3, 800, 'PO8865', 'SMA06', 'B576'),
+('PR1534', '20 King St', 'Liverpool', 'L1 9DG', 'Flat', 3, 600, 'PO4823', 'SMA06', 'B576'),
+('PR1645', '5 Queen St', 'Manchester', 'M3 1DU', 'House', 5, 1200, 'PO4967', 'SSU15', 'B843'),
+('PR1756', '15 Princess St', 'Cardiff', 'CF24 1BY', 'Flat', 2, 700, 'PO5012', 'SAS38', 'B467'),
+('PR1867', '33 Castle St', 'Bristol', 'BS1 4PQ', 'House', 4, 850, 'PO5134', 'SAS09', 'B394'),
+('PR1978', '12 York Rd', 'Leeds', 'LS1 4AJ', 'Flat', 3, 650, 'PO5278', 'SMA05', 'B052'),
+('PR2089', '45 Park Rd', 'Edinburgh', 'EH1 5BU', 'House', 5, 1100, 'PO5389', 'SMA22', 'B235'),
+('PR2190', '29 Station St', 'Birmingham', 'B2 4RT', 'Flat', 2, 550, 'PO5467', 'SSU14', 'B052'),
+('PR2212', '50 Grove Rd', 'Newcastle', 'NE1 4BP', 'House', 4, 900, 'PO5598', 'SMA23', 'B901'),
+('PR2323', '80 Elm St', 'Brighton', 'BN1 2RT', 'Flat', 1, 450, 'PO5612', 'SAS10', 'B189'),
+('PR2434', '60 Crescent Rd', 'Oxford', 'OX1 1LP', 'House', 5, 1200, 'PO5789', 'SSU39', 'B678'),
+('PR2545', '18 Abbey Rd', 'Liverpool', 'L12 5BW', 'Flat', 3, 750, 'PO4823', 'SAS41', 'B721'),
+('PR2656', '7 Market St', 'Manchester', 'M2 2FJ', 'House', 4, 950, 'PO4967', 'SSU15', 'B843'),
+('PR2767', '9 Victoria St', 'Cardiff', 'CF11 6RG', 'Flat', 2, 650, 'PO5012', 'SAS38', 'B467'),
+('PR2878', '22 George St', 'Bristol', 'BS2 0DH', 'House', 5, 1000, 'PO5134', 'SMA21', 'B721'),
+('PR2989', '11 Church Lane', 'Manchester', 'M4 1NP', 'Flat', 2, 550, 'PO5823', 'SSU15', 'B843'),
+('PR3090', '33 Rose Street', 'Glasgow', 'G1 2TU', 'House', 4, 850, 'PO5967', 'SAS37', 'B052'),
+('PR3112', '7 Oakwood Drive', 'Birmingham', 'B1 1WW', 'Flat', 3, 700, 'PO6023', 'SSU14', 'B052'),
+('PR3223', '19 Willow Road', 'Leeds', 'LS1 5XX', 'House', 5, 1100, 'PO6178', 'SMA05', 'B052'),
+('PR3334', '26 Cedar Avenue', 'Bristol', 'BS1 6YY', 'Flat', 2, 600, 'PO6234', 'SAS09', 'B394'),
+('PR3445', '42 Maple Street', 'Edinburgh', 'EH1 1ZZ', 'House', 4, 950, 'PO5823', 'SMA22', 'B235'),
+('PR3556', '15 Birch Lane', 'Liverpool', 'L1 7AA', 'Flat', 1, 450, 'PO5967', 'SMA06', 'B576'),
+('PR3667', '8 Pine Close', 'Cardiff', 'CF10 2BB', 'House', 3, 800, 'PO6023', 'SAS38', 'B467'),
+('PR3778', '23 Elm Road', 'Newcastle', 'NE1 3CC', 'Flat', 2, 550, 'PO6178', 'SMA23', 'B901'),
+('PR3889', '37 Sycamore Avenue', 'Brighton', 'BN1 4DD', 'House', 5, 1200, 'PO6234', 'SAS10', 'B189');
