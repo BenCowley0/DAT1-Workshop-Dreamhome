@@ -8,17 +8,18 @@ DROP TABLE IF EXISTS SalesStaff;
 -- Create our first table
 CREATE TABLE contacts (
     contactsID INTEGER PRIMARY KEY NOT NULL,
-    fname VARCHAR(25),
+    fname VARCHAR(25) CHECK(length (fname) > 1),
     lname VARCHAR(25),
-    email VARCHAR(40) CHECK( email LIKE '%@%'),
-    phone CHAR(11) DEFAULT '00000000000'
+    email VARCHAR(40) CHECK( email LIKE '%@%.ac.uk'),
+    phone CHAR(11) DEFAULT '00000000000' CHECK (length(phone) = 11)
 );
 
 -- Insert data into table
 INSERT INTO contacts (fname, lname, email, phone)
 VALUES  ('Tina','Gotschi', 'tina@ada.ac.uk', '01234567899'),
         ('Fred','Rogers', 'fred@ada.ac.uk', '01234567899'),
-        ('Ginger','Astair', 'ginger@ada.ac.uk', '01234567899');
+        ('Ginger','Astair', 'ginger@ada.ac.uk', '01234567899'),
+        ('Sam', 'Power', 'APOWER@ada.ac.uk','01234567899');
 
 
 -- Create Address Table and insert data into it
