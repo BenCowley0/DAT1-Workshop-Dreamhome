@@ -138,9 +138,9 @@ INSERT INTO propertyForRent (propertyno, street, city, postcode, type, rooms, re
 ('PR1978', '12 York Rd', 'Leeds', 'LS1 4AJ', 'Flat', 3, 650, 'PO5278', 'SMA05', 'B052'),
 ('PR2089', '45 Park Rd', 'Edinburgh', 'EH1 5BU', 'House', 5, 1100, 'PO5389', 'SMA22', 'B235'),
 ('PR2190', '29 Station St', 'Birmingham', 'B2 4RT', 'Flat', 2, 550, 'PO5467', 'SSU14', 'B052'),
-('PR2212', '50 Grove Rd', 'Newcastle', 'NE1 4BP', 'House', 4, 900, 'PO5598', 'SMA23', 'B901'),
+-- ('PR2212', '50 Grove Rd', 'Newcastle', 'NE1 4BP', 'House', 4, 900, 'PO5598', 'SMA23', 'B901'),
 ('PR2323', '80 Elm St', 'Brighton', 'BN1 2RT', 'Flat', 1, 450, 'PO5612', 'SAS10', 'B189'),
-('PR2434', '60 Crescent Rd', 'Oxford', 'OX1 1LP', 'House', 5, 1200, 'PO5789', 'SSU39', 'B678'),
+-- ('PR2434', '60 Crescent Rd', 'Oxford', 'OX1 1LP', 'House', 5, 1200, 'PO5789', 'SSU39', 'B678'),
 ('PR2545', '18 Abbey Rd', 'Liverpool', 'L12 5BW', 'Flat', 3, 750, 'PO4823', 'SAS41', 'B721'),
 ('PR2656', '7 Market St', 'Manchester', 'M2 2FJ', 'House', 4, 950, 'PO4967', 'SSU15', 'B843'),
 ('PR2767', '9 Victoria St', 'Cardiff', 'CF11 6RG', 'Flat', 2, 650, 'PO5012', 'SAS38', 'B467'),
@@ -153,5 +153,5 @@ INSERT INTO propertyForRent (propertyno, street, city, postcode, type, rooms, re
 ('PR3445', '42 Maple Street', 'Edinburgh', 'EH1 1ZZ', 'House', 4, 950, 'PO5823', 'SMA22', 'B235'),
 ('PR3556', '15 Birch Lane', 'Liverpool', 'L1 7AA', 'Flat', 1, 450, 'PO5967', 'SMA06', 'B576'),
 ('PR3667', '8 Pine Close', 'Cardiff', 'CF10 2BB', 'House', 3, 800, 'PO6023', 'SAS38', 'B467'),
-('PR3778', '23 Elm Road', 'Newcastle', 'NE1 3CC', 'Flat', 2, 550, 'PO6178', 'SMA23', 'B901'),
+-- ('PR3778', '23 Elm Road', 'Newcastle', 'NE1 3CC', 'Flat', 2, 550, 'PO6178', 'SMA23', 'B901'),
 ('PR3889', '37 Sycamore Avenue', 'Brighton', 'BN1 4DD', 'House', 5, 1200, 'PO6234', 'SAS10', 'B189');
