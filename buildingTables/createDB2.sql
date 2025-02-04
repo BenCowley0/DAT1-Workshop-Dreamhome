@@ -21,7 +21,7 @@ VALUES ('John','Smith','John@ada.ac.uk','12345678900'),
 CREATE TABLE products (
     product_id   INTEGER         PRIMARY KEY,
     product_name TEXT            NOT NULL,
-    list_price   DECIMAL (10,2)  CHECK(list_price > discount) NOT NULL,
+    list_price   DECIMAL (10,2)  CHECK(list_price >= discount) NOT NULL,
     discount     DECIMAL (10,2)  NOT NULL
 );
 
@@ -38,4 +38,4 @@ CREATE TABLE voter (
 
 INSERT INTO voter (name, age, dob)
 VALUES ('Sam', 25, '1-01-2000'),
-       ('Jack', 17, '1-01-2008');
+       ('Jack', 19, '1-01-2008');
