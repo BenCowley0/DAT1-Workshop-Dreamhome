@@ -1,9 +1,13 @@
 .open ddlPractice.sqlite
+-- Switchin on referentia inegrity rules (foreign key rules)
+PRAGMA foreign_keys = ON;
 
 -- Delete the table so it can be re-created every time
+DROP TABLE IF EXISTS appearance;
 DROP TABLE IF EXISTS contacts;
 DROP TABLE IF EXISTS addresses;
 DROP TABLE IF EXISTS SalesStaff;
+
 
 -- Create our first table
 CREATE TABLE contacts (
@@ -21,6 +25,18 @@ VALUES  ('Tina','Gotschi', 'tina@ada.ac.uk', '01234567899'),
         ('Ginger','Astair', 'ginger@ada.ac.uk', '01234567899'),
         ('Sam', 'Power', 'APOWER@ada.ac.uk','01234567899');
 
+CREATE TABLE appearance (
+    appearanceID INTEGER PRIMARY KEY NOT NULL,
+    haircolour VARCHAR(20) CHECK ( haircolour IN ('black','brown','green','blond') ),
+    wearsglasses BOOLEAN, -- If true, they wear glasses, false no glasses
+    contactsID INTEGER,
+    FOREIGN KEY(contactsID) REFERENCES contacts
+);
+
+INSERT INTO appearance (haircolour, wearsglasses, contactsID)
+VALUES  ('brown',TRUE, 1),
+        ('blond',TRUE, 2),
+        ('green',FALSE, 3);
 
 -- Create Address Table and insert data into it
 CREATE TABLE addresses (
