@@ -5,9 +5,9 @@ PRAGMA foreign_keys = ON;
 -- Delete the table so it can be re-created every time
 DROP TABLE IF EXISTS appearance;
 DROP TABLE IF EXISTS contacts;
+
 DROP TABLE IF EXISTS addresses;
 DROP TABLE IF EXISTS SalesStaff;
-
 
 -- Create our first table
 CREATE TABLE contacts (
