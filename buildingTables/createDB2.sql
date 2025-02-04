@@ -4,6 +4,7 @@ PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS contacts;
 DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS voter;
 
 CREATE TABLE contacts (
     contact_id INTEGER PRIMARY KEY,
@@ -27,3 +28,14 @@ CREATE TABLE products (
 INSERT INTO products (product_name, list_price, discount)
 VALUES ('Apple', 2.50, 0.25),
        ('Orange', 1.00, 0.50);
+
+CREATE TABLE voter (
+    voter_id INTEGER PRIMARY KEY,
+    name TEXT,
+    age INTEGER CHECK (age > 18),
+    dob DATE 
+);
+
+INSERT INTO voter (name, age, dob)
+VALUES ('Sam', 25, '1-01-2000'),
+       ('Jack', 17, '1-01-2008');
