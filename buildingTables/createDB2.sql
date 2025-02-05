@@ -11,7 +11,7 @@ CREATE TABLE contacts (
     first_name TEXT    NOT NULL,
     last_name  TEXT    NOT NULL,
     email      TEXT,
-    phone      TEXT CHECK(length(phone) > 10) NOT NULL
+    phone      TEXT CHECK(length(phone) >= 10) NOT NULL
 );
 
 INSERT INTO contacts (first_name, last_name, email, phone)
@@ -21,8 +21,8 @@ VALUES ('John','Smith','John@ada.ac.uk','12345678900'),
 CREATE TABLE products (
     product_id   INTEGER         PRIMARY KEY,
     product_name TEXT            NOT NULL,
-    list_price   DECIMAL (10,2)  CHECK(list_price >= discount) NOT NULL,
-    discount     DECIMAL (10,2)  NOT NULL
+    list_price   DECIMAL (10,2)  CHECK(list_price >= discount AND list_price > 0) NOT NULL,
+    discount     DECIMAL (10,2)  CHECK(discount > 0) NOT NULL
 );
 
 INSERT INTO products (product_name, list_price, discount)

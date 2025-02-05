@@ -155,3 +155,5 @@ INSERT INTO propertyForRent (propertyno, street, city, postcode, type, rooms, re
 ('PR3667', '8 Pine Close', 'Cardiff', 'CF10 2BB', 'House', 3, 800, 'PO6023', 'SAS38', 'B467'),
 -- ('PR3778', '23 Elm Road', 'Newcastle', 'NE1 3CC', 'Flat', 2, 550, 'PO6178', 'SMA23', 'B901'),
 ('PR3889', '37 Sycamore Avenue', 'Brighton', 'BN1 4DD', 'House', 5, 1200, 'PO6234', 'SAS10', 'B189');
+
+
